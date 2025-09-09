@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Hueso
   - Obstaculo
+  - Llave
+  - Pincho
+  - Vida
+  - Tiempo
   layers:
   - Default
   - TransparentFX
