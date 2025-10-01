@@ -20,7 +20,7 @@ public class MusloTiempo : MonoBehaviour
     private TextMeshProUGUI textoVidas;
     [SerializeField]
     private TextMeshProUGUI textoBoolLlave;
-    void Update()
+    void Update() 
     {
         tiempoInicio -= Time.deltaTime;
         textoTemporizador.text = "Tiempo Restante: " + tiempoInicio.ToString("f0");

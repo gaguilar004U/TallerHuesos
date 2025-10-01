@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 /*
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool _llave = false;
     public bool Llave => _llave;
+
 
 
     public void SumarPuntos(int cantidad)
@@ -36,5 +38,27 @@ public class GameManager : MonoBehaviour
     public void ReiniciarEscena()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void EstadoDelJugador(string estado)
+    {
+        switch (estado)
+        {
+            case "Play":
+                Time.timeScale = 1;
+                break;
+            case "Pause":
+                Time.timeScale = 0;
+                break;
+            case "Ganaste":
+                Time.timeScale = 1;
+                break;
+            case "Perdiste":
+                Time.timeScale = 1;
+                break;
+            case "Salir":
+                Application.Quit();
+                break;
+        }
     }
 }
