@@ -6,7 +6,7 @@ ESTADO: COMPLETADO✅
 */
 public class GameManager : MonoBehaviour
 {
-
+    public UIManager uiManager;
     [SerializeField]
     private int _puntos;
     public int Puntos => _puntos; // Propiedad de solo lectura
@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
         _vidas += cantidad;
         if (_vidas <= 0)
         {
-            ReiniciarEscena();
+            uiManager.EstadoDelJugador("Perdiste");
+            //ReiniciarEscena();
         }
     }
     public void TieneLaLlave(bool estado)
@@ -38,27 +39,5 @@ public class GameManager : MonoBehaviour
     public void ReiniciarEscena()
     {
         SceneManager.LoadScene(0);
-    }
-
-    public void EstadoDelJugador(string estado)
-    {
-        switch (estado)
-        {
-            case "Play":
-                Time.timeScale = 1;
-                break;
-            case "Pause":
-                Time.timeScale = 0;
-                break;
-            case "Ganaste":
-                Time.timeScale = 1;
-                break;
-            case "Perdiste":
-                Time.timeScale = 1;
-                break;
-            case "Salir":
-                Application.Quit();
-                break;
-        }
     }
 }

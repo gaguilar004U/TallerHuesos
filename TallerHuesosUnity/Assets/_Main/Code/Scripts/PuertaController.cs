@@ -16,10 +16,7 @@ public class PuertaController : MonoBehaviour
         {
             if (gameManager.Llave)
             {
-                pantallaGanaste.SetActive(true);
-
-                // Pausa el juego.
-                Time.timeScale = 0f;
+               gameManager.uiManager.EstadoDelJugador("Ganaste");
             }
         }
     }
