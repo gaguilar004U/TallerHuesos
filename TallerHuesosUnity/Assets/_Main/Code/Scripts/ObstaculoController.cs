@@ -11,7 +11,7 @@ public class ObstaculoController : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.Puntos >= 10)
+        if (gameManager._puntos >= 10)
         {
             Destroy(this.gameObject);
         }

@@ -14,9 +14,9 @@ public class PuertaController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (gameManager.Llave)
+            if (gameManager._llave)
             {
-               gameManager.uiManager.EstadoDelJugador("Ganaste");
+               gameManager.EstadoDelJugador("Ganaste");
             }
         }
     }

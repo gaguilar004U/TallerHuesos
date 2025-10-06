@@ -6,18 +6,21 @@ ESTADO: COMPLETADO✅
 */
 public class GameManager : MonoBehaviour
 {
+
     public UIManager uiManager;
+    public string estado = "Play";
     [SerializeField]
-    private int _puntos;
-    public int Puntos => _puntos; // Propiedad de solo lectura
+    public int _puntos = 0;
     [SerializeField]
-    private int _vidas = 10;
-    public int CantVidas => _vidas;
+    public int _vidas = 5;
     [SerializeField]
-    private bool _llave = false;
-    public bool Llave => _llave;
+    public bool _llave = false;
 
-
+    void Start()
+    {
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        EstadoDelJugador(estado);
+    }
 
     public void SumarPuntos(int cantidad)
     {
@@ -28,7 +31,7 @@ public class GameManager : MonoBehaviour
         _vidas += cantidad;
         if (_vidas <= 0)
         {
-            uiManager.EstadoDelJugador("Perdiste");
+            EstadoDelJugador("Perdiste");
             //ReiniciarEscena();
         }
     }
@@ -39,5 +42,26 @@ public class GameManager : MonoBehaviour
     public void ReiniciarEscena()
     {
         SceneManager.LoadScene(0);
+    }
+    public void EstadoDelJugador(string estado)
+    {
+        switch (estado)
+        {
+            case "Play":
+                Time.timeScale = 1;
+                break;
+            case "Pause":
+                Time.timeScale = 0;
+                break;
+            case "Ganaste":
+                SceneManager.LoadScene(2);
+                break;
+            case "Perdiste":
+                SceneManager.LoadScene(1);
+                break;
+            case "Salir":
+                Application.Quit();
+                break;
+        }
     }
 }

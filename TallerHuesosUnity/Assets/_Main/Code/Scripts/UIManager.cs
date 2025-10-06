@@ -1,36 +1,41 @@
 using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    /*void Start()
+    [SerializeField]
+    private GameObject[] _corazones;
+    [SerializeField]
+    private GameManager gameManager;
+    public int vidasUI;
+    void Start()
     {
-                
-    }
-
-    void Update()
-    {*/
-        public void EstadoDelJugador(string estado)
+        vidasUI = gameManager._vidas;
+        for (int i = 0; i < _corazones.Length; i++)
         {
-            switch (estado)
-            {
-                case "Play":
-                    Time.timeScale = 1;
-                    break;
-                case "Pause":
-                    Time.timeScale = 0;
-                    break;
-                case "Ganaste":
-                    SceneManager.LoadScene(2);
-                    break;
-                case "Perdiste":
-                    SceneManager.LoadScene(1);
-                    break;
-                case "Salir":
-                    Application.Quit();
-                    break;
-            }
+            _corazones[i].SetActive(true);
         }
     }
-//}
+    void Update()
+    {
+        vidasUI = gameManager._vidas;
+        for (int i = 0; i < _corazones.Length; i++)
+        {
+            // Activa solo los corazones menores al número de vidas actual
+            _corazones[i].gameObject.SetActive(i < vidasUI);
+        }
+    }
+
+    /*public void UpdateHearts(int vidasUI)
+    {
+        vidasUI = gameManager._vidas;
+        for (int i = 0; i < _corazones.Length; i++)
+        {
+            // Activa solo los corazones menores al número de vidas actual
+            _corazones[i].gameObject.SetActive(i < vidasUI);
+        }
+
+    }*/
+}
+
