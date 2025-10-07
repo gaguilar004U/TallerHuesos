@@ -1,7 +1,7 @@
 using UnityEngine;
-/*
-ESTADO: COMPLETADO✅
-*/
+
+//ESTADO: COMPLETADO✅
+
 
 public class Muslo : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class Muslo : MonoBehaviour
     {
         if (Tiempo.CompareTag("Player"))
         {
-            musloTiempo.tiempoInicio += 20;
+            musloTiempo.tiempoInicio += 20f;
             Destroy(this.gameObject);
         }
     }
